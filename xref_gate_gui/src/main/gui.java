@@ -31,7 +31,7 @@ public class gui extends JFrame implements ActionListener {
             public void run() {
                 gui ex = new gui();
                 ex.setSize(1000,400);
-                ex.setTitle("Category to Group");
+                ex.setTitle("PROD Category to Group");
                 ex.setLocationRelativeTo(null);
                 ex.pack();
                 ex.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,29 +74,13 @@ public class gui extends JFrame implements ActionListener {
 		}
 		
 		//Create and add the radioButtons
-		JPanel qaPanel = new JPanel(new GridLayout(2,2));
-		JRadioButton qa   = new JRadioButton("QA");
-		JRadioButton prod = new JRadioButton("Prod");
+		JPanel qaPanel = new JPanel(new GridLayout(1,2));
 		JRadioButton gate   = new JRadioButton("Open Gate");
 		JRadioButton backout = new JRadioButton("Back Out");
 		
-		qa.setSelected(true);
 		gate.setSelected(true);
+		
 		//Add in-line action listeners
-		qa.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				constants.prod = false;
-				uncheckAll();
-			}
-		});
-		prod.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				constants.prod = true;
-				uncheckAll();
-			}
-		});
-		
-		
 		gate.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				constants.gate = true;
@@ -119,16 +103,7 @@ public class gui extends JFrame implements ActionListener {
 		group2.add(gate);
 		group2.add(backout);
 		
-		//Create the Button groups
-		ButtonGroup group = new ButtonGroup();
-		qaPanel.add(prod);
-		
 		qaPanel.add(backout);
-		
-		qaPanel.add(qa);
-	    //Add the radioButtons to the GUI
-		group.add(prod);
-	    group.add(qa);
 		
 	    //add the three portions of the GUI
 		topPanel.add( tabbedPane, BorderLayout.CENTER );
@@ -259,13 +234,11 @@ public class gui extends JFrame implements ActionListener {
 		Collections.sort((constants.reprocess.subList(0, constants.reprocess.size())));
 		
 		//Default output file is the qa file
-		File file = new File(constants.outFileQa);
+		File file = new File(constants.backOutFileProd);
 		
 		//Determine the output file based on the radioButton selection
 		if(constants.prod == true){
 			file = new File(constants.outFileProd);
-		}else{
-			file = new File(constants.outFileQa);
 		}
 
 		/**
@@ -316,15 +289,12 @@ public class gui extends JFrame implements ActionListener {
 		}
 		System.out.println(total);
 		
-		File file = new File(constants.backOutFileQa);
+		File file = new File(constants.backOutFileProd);
 		
 		//Determine the output file based on the radioButton selection
 		if(constants.prod == true){
 			file = new File(constants.backOutFileProd);
-		}else{
-			file = new File(constants.backOutFileQa);
-		}
-		
+		}		
 		
 		//Write to the file
 		try {
@@ -396,15 +366,7 @@ public class gui extends JFrame implements ActionListener {
 		
 		File file;
 		
-		if(constants.prod != true){
-			if(constants.gate != true){
-				file = new File(constants.backOutFileQa);
-				//System.out.println(constants.backOutFileQa);
-			}else{
-				file = new File(constants.outFileQa);
-				//System.out.println(constants.outFileQa);
-			}
-		}else{
+
 			if(constants.gate != true){
 				file = new File(constants.backOutFileProd);
 				//System.out.println(constants.backOutFileProd);
@@ -412,7 +374,7 @@ public class gui extends JFrame implements ActionListener {
 				file = new File(constants.outFileProd);
 				//System.out.println(constants.outFileProd);
 			}
-		}
+		
 					
 		constants.reprocess.clear();
 		
