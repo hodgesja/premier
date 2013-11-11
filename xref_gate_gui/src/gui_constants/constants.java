@@ -17,9 +17,7 @@ public abstract class constants {
 	public static int maxLeng = 0;
 	public static int numOfTabs = 3;
 	public static String outFileQa        = "//corp03fs03/group/datamgmt/silver creek/ab_initio_share/supplier_xref/QA/supplier_xref_category.csv";
-	public static String outFileProd      = "//corp03fs03/group/datamgmt/silver creek/ab_initio_share/supplier_xref/PROD/supplier_xref_category.csv";
 	public static String backOutFileQa    = "//corp03fs03/group/datamgmt/silver creek/ab_initio_share/supplier_xref/QA/supplier_xref_backout.csv";
-	public static String backOutFileProd  = "//corp03fs03/group/datamgmt/silver creek/ab_initio_share/supplier_xref/PROD/supplier_xref_backout.csv";
 	
 	public static String wavePath = "//corp03fs03/group/Datamgmt/Silver Creek/ab_initio_share/supplier_xref/category_gui";
 	
