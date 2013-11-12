@@ -483,7 +483,11 @@ public class gui extends JFrame implements ActionListener {
 	        
 	        //results from query
 	        while(rs.next()){
-	        	uniqueCategories.add(rs.getString("CATEGORY"));
+	        	if(rs.getString("CATEGORY").length() > 75){
+	        		uniqueCategories.add((rs.getString("CATEGORY")).substring(0, 72) + "...");
+	        	}else{
+	        		uniqueCategories.add(rs.getString("CATEGORY"));
+	        	}
 	        }
 	        
 	        Collections.sort((uniqueCategories.subList(0, uniqueCategories.size())));
